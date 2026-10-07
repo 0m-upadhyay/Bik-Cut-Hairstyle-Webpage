@@ -36,8 +36,26 @@
 :root {
   --font-display: "Fraunces", "Georgia", serif;
   --font-body: "Inter", sans-serif;
-  --radius: 14px;
   --container: 72rem;
+
+  /* type scale — 8 steps, every font-size below points at one of these */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3rem;
+
+  /* radius scale — 6 steps, every border-radius below points at one of these */
+  --radius-xs: 2px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+  --radius: var(--radius-md); /* alias kept so existing var(--radius) calls still resolve */
 }
 
 * {
@@ -71,7 +89,7 @@ a {
 }
 
 .section-title {
-  font-size: 1.6rem;
+  font-size: var(--fs-xl);
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -80,10 +98,10 @@ a {
 .btn {
   display: inline-block;
   padding: 0.85rem 1.6rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
   text-align: center;
   border: none;
   cursor: pointer;
@@ -141,7 +159,7 @@ a {
 .navbar__logo {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: var(--fs-lg);
 }
 
 .navbar__logo-accent {
@@ -165,7 +183,7 @@ a {
   height: 2px;
   width: 100%;
   background: var(--ink);
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
 }
 
 .navbar__panel {
@@ -183,7 +201,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
 }
 
 .navbar__links a {
@@ -204,7 +222,7 @@ a {
 
 .hero__blob {
   position: absolute;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   filter: blur(90px);
   z-index: 0;
   animation: drift 18s ease-in-out infinite;
@@ -259,7 +277,7 @@ a {
 }
 
 .hero__eyebrow {
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   letter-spacing: 0.04em;
   color: var(--accent-soft);
   margin-bottom: 0.75rem;
@@ -267,7 +285,7 @@ a {
 }
 
 .hero__headline {
-  font-size: 2.2rem;
+  font-size: var(--fs-2xl);
   margin-bottom: 1rem;
 }
 
@@ -297,7 +315,7 @@ a {
 
 .hero__visual-card {
   position: relative;
-  border-radius: calc(var(--radius) + 8px);
+  border-radius: var(--radius-lg);
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow:
@@ -320,7 +338,7 @@ a {
   align-items: center;
   justify-content: center;
   color: var(--ink-muted);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   background:
     repeating-linear-gradient(45deg, rgba(var(--shadow-color), 0.04) 0 10px, transparent 10px 20px);
 }
@@ -342,7 +360,7 @@ a {
   background: var(--accent);
   color: var(--accent-ink);
   padding: 0.6rem 0.9rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
   line-height: 1.2;
@@ -350,11 +368,11 @@ a {
 }
 
 .hero__visual-badge strong {
-  font-size: 1rem;
+  font-size: var(--fs-base);
 }
 
 .hero__visual-badge span {
-  font-size: 0.7rem;
+  font-size: var(--fs-xs);
   opacity: 0.85;
 }
 
@@ -385,12 +403,12 @@ a {
 
 .quick-info__value {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: var(--fs-lg);
   font-weight: 700;
 }
 
 .quick-info__label {
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--ink-muted);
 }
 
@@ -422,7 +440,7 @@ a {
 .why-us__card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   text-align: center;
   box-shadow: 0 16px 30px -22px rgba(var(--shadow-color), 0.5);
@@ -441,20 +459,20 @@ a {
   align-items: center;
   justify-content: center;
   margin: 0 auto 0.75rem;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: color-mix(in srgb, var(--accent-soft) 18%, transparent);
   color: var(--accent-soft);
-  font-size: 1.1rem;
+  font-size: var(--fs-md);
 }
 
 .why-us__card h3 {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   margin-bottom: 0.4rem;
 }
 
 .why-us__card p {
   color: var(--ink-muted);
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
 }
 
 /* ---------- 06 SERVICES ---------- */
@@ -473,7 +491,7 @@ a {
 .service-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   text-align: center;
   box-shadow: 0 16px 30px -22px rgba(var(--shadow-color), 0.5);
@@ -487,7 +505,7 @@ a {
 }
 
 .service-card h3 {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   margin-bottom: 0.4rem;
 }
 
@@ -511,7 +529,7 @@ a {
 }
 
 .booking__form label {
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
 }
 
@@ -519,7 +537,7 @@ a {
 .booking__form select {
   padding: 0.75rem 0.9rem;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   font: inherit;
   width: 100%;
   background: var(--bg);
@@ -545,7 +563,7 @@ a {
 
 .gallery__item {
   aspect-ratio: 1;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 25%, var(--surface)), var(--surface));
   border: 1px solid var(--border);
   overflow: hidden;
@@ -572,7 +590,7 @@ a {
 
 .instagram__item {
   aspect-ratio: 1;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 20%, var(--surface)), var(--surface));
   border: 1px solid var(--border);
 }
@@ -593,7 +611,7 @@ a {
 .review-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   box-shadow: 0 16px 30px -22px rgba(var(--shadow-color), 0.5);
 }
@@ -623,7 +641,7 @@ a {
 .faq__item {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   padding: 1rem 1.25rem;
 }
 
@@ -643,7 +661,7 @@ a {
 .faq__item summary::after {
   content: "+";
   color: var(--accent);
-  font-size: 1.2rem;
+  font-size: var(--fs-lg);
   margin-left: 1rem;
 }
 
@@ -671,7 +689,7 @@ a {
 
 .location__map {
   min-height: 12rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   background: var(--surface);
   border: 1px solid var(--border);
 }
@@ -691,7 +709,7 @@ a {
 .footer__brand {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: var(--fs-lg);
   margin-bottom: 1rem;
 }
 
@@ -706,7 +724,7 @@ a {
 
 .footer__copyright {
   margin-top: 1.5rem;
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   opacity: 0.5;
 }
 
@@ -717,13 +735,13 @@ a {
   right: 1.25rem;
   width: 3.2rem;
   height: 3.2rem;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--accent);
   color: var(--accent-ink);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: var(--fs-xl);
   text-decoration: none;
   box-shadow: 0 10px 24px -8px rgba(var(--shadow-color), 0.6);
   z-index: 60;
@@ -867,7 +885,7 @@ select:focus-visible {
   }
 
   .hero__headline {
-    font-size: 3.2rem;
+    font-size: var(--fs-3xl);
   }
 
   .hero__subline {
